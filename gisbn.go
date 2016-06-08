@@ -2,6 +2,7 @@ package gisbn
 
 import (
 	"fmt"
+	"log"
 	 "net/http"
 	 "net/url"
 )
@@ -17,21 +18,6 @@ func failOnError(err error, msg string) {
   }
 }
 
-// Book Object
-//
-// This contains a few private variables that are
-// given accessor methods.
-// This is the object that is created upon using
-type Book struct {
-  isbn_10         string
-  isbn_13         string
-  title           string
-  authors         []string
-  publishers      []string
-  edition         string  
-  cover           image.Image  
-  published       time.Time
-}
 
 
 
@@ -46,12 +32,12 @@ type ISBN struct {
 
 
 //Set ISBN
-func (i *isbn)setIsbn (isbn string) {
+func (i *ISBN)setIsbn (isbn string) {
 	i.isbn  = isbn
 }
 
 
-func (i *isbn) fetch(isbn string) {
+func (i *ISBN) fetch() {
 
 	//formating API URL
 	var requestUrl *url.URL
@@ -60,12 +46,13 @@ func (i *isbn) fetch(isbn string) {
 
     requestUrl.Path += "/books/v1/volumes"
     parameters := url.Values{}
-    parameters.Add("q", fmt.Sprint("isbn:", isbn))
+    parameters.Add("q", fmt.Sprint("isbn:", i.isbn))
     parameters.Add("key", i.key)
     parameters.Add("country", i.country)
     requestUrl.RawQuery = parameters.Encode()	
 
 	response, err := http.Get(requestUrl.String())
+	fmt.Println(response)
 }
 
 
