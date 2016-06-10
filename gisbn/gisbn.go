@@ -2,6 +2,7 @@ package gisbn
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -45,5 +46,10 @@ func (i *GISBN) Fetch() {
 	requestUrl.RawQuery = parameters.Encode()
 
 	response, err := http.Get(requestUrl.String())
-	fmt.Println(response)
+	failOnError(err, "URL ")
+	body, err := ioutil.ReadAll(response.Body)
+	failOnError(err, "URL ")
+
+	book, _ := getBook([]byte(body))
+	fmt.Printf("%+v\n", book.Title)
 }
