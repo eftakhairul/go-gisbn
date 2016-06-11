@@ -18,11 +18,13 @@ func failOnError(err error, msg string) {
 	}
 }
 
+var book Book
+
 //GISBN object
 type GISBN struct {
 	isbn    string
 	key     string
-	country string
+	country string	
 }
 
 //Set ISBN
@@ -50,6 +52,6 @@ func (i *GISBN) Fetch() {
 	body, err := ioutil.ReadAll(response.Body)
 	failOnError(err, "URL ")
 
-	book, _ := getBook([]byte(body))
+	book, _ = getBook([]byte(body))
 	fmt.Printf("%+v\n", book.ISBN10())
 }
