@@ -51,5 +51,5 @@ func (i *GISBN) Fetch() {
 	failOnError(err, "URL ")
 
 	book, _ := getBook([]byte(body))
-	fmt.Printf("%+v\n", book.ISBN_10())
+	fmt.Printf("%+v\n", book.ISBN10())
 }

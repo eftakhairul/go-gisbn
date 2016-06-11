@@ -49,7 +49,7 @@ func getBook(body []byte) (Book, error) {
 }
 
 
-func (b *Book)ISBN_13() string {
+func (b *Book)ISBN13() string {
 	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[0].Type == "ISBN_13" {
 		return b.IndustryIdentifiers[0].Identifier
 	}
@@ -62,7 +62,7 @@ func (b *Book)ISBN_13() string {
 }
 
 
-func (b *Book)ISBN_10() string {
+func (b *Book)ISBN10() string {
 	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[0].Type == "ISBN_10" {
 		return b.IndustryIdentifiers[0].Identifier
 	}
@@ -74,7 +74,10 @@ func (b *Book)ISBN_10() string {
 	return "Sorry  not found"
 }
 
-func (b *Book)ThumbnailLink() string {
-	
+func (b *Book)ThumbnailLink() string {	
 	return b.Images.Thumbnail
+}
+
+func (b *Book)TotalPage() int {	
+	return b.Page_count
 }
