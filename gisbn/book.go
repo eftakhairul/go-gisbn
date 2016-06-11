@@ -1,20 +1,17 @@
 package gisbn
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
+//Image object
 type ImageLinks struct {
 	SmallThumbnail  string   `json:"smallThumbnail"`
 	Thumbnail 		string   `json:"thumbnail"`
 }
 
+//ISBN Indentifier Object
 type IndustryIdentifier struct {
 	Type  			string   `json:"type"`
 	Identifier 		string   `json:"identifier"`
 }
-
+//Book Object
 type Book struct {
 	Title       		string   				`json:"title"`
 	Authors     		[]string 				`json:"authors"`
@@ -27,57 +24,17 @@ type Book struct {
 	IndustryIdentifiers []IndustryIdentifier	`json:"industryIdentifiers"`		
 }
 
+//Item Object
+//
+//Main Json response holds this Item object
 type Item struct {
 	Id         string `json:"id"`
 	Selflink   string `json:"selfLink"`
 	Volumeinfo Book   `json:"volumeInfo"`
 }
 
+//Main Json Response
 type JsonResponse struct {
 	Total int    `json:"totalItems"`
 	Items []Item `json:"items"`
-}
-
-func getBook(body []byte) (Book, error) {
-	var jsonresponse = new(JsonResponse)
-	err := json.Unmarshal(body, &jsonresponse)
-	if err != nil {
-		fmt.Println("whoops:", err)
-	}
-
-	return jsonresponse.Items[0].Volumeinfo, err
-}
-
-
-func (b *Book)ISBN13() string {
-	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[0].Type == "ISBN_13" {
-		return b.IndustryIdentifiers[0].Identifier
-	}
-
-	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[1].Type == "ISBN_13" {
-		return b.IndustryIdentifiers[1].Identifier
-	}
-
-	return "Sorry  not found"
-}
-
-
-func (b *Book)ISBN10() string {
-	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[0].Type == "ISBN_10" {
-		return b.IndustryIdentifiers[0].Identifier
-	}
-
-	if len(b.IndustryIdentifiers) > 0 && b.IndustryIdentifiers[1].Type == "ISBN_10" {
-		return b.IndustryIdentifiers[1].Identifier
-	}
-
-	return "Sorry  not found"
-}
-
-func (b *Book)ThumbnailLink() string {	
-	return b.Images.Thumbnail
-}
-
-func (b *Book)TotalPage() int {	
-	return b.Page_count
 }
