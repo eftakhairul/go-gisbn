@@ -3,7 +3,7 @@ It's a standard GOlang library. It fetches book's information by ISBN number bas
 
 Installation
 -------------
-go get https://github.com/eftakhairul/go-gisbn
+	go get https://github.com/eftakhairul/go-gisbn
 
 Project Usage
 -------------
