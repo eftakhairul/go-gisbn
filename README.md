@@ -1,6 +1,24 @@
 # go-gisbn
 It's a standard GOlang library. It fetches book's information by ISBN number based on Google Book API.
 
+Installation
+-------------
+go get https://github.com/eftakhairul/go-gisbn
+
+Project Usage
+-------------
+The API usage is very simple. Just import the go-gisbn package
+
+	import (
+		"https://github.com/eftakhairul/go-gisbn/gisbn"
+	)
+
+	Make instace and call methods
+
+	g := GISBN{"9780262033848", "AIzaSyDKepjfaVBRcgsnPALw5s2UNyfOk-1FHUU", "ca"}
+	g.Fetch()
+	fmt.Println(g.Title())   //Introduction to Algorithms
+
 ### Development
 
 Want to contribute? Great!
