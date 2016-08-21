@@ -3,7 +3,7 @@ It's a standard GOlang library. It fetches book's information by ISBN number bas
 
 Installation
 -------------
-	go get github.com/eftakhairul/go-gisbn
+	go get github.com/eftakhairul/go-gisbn/gisbn
 
 Project Usage
 -------------
@@ -13,11 +13,15 @@ The API usage is very simple. Just import the go-gisbn package
 		"github.com/eftakhairul/go-gisbn/gisbn"
 	)
 
-	Make instace and call methods
-
-	g := GISBN{"9780262033848", "AIzaSyDKepjfaVBRcgsnPALw5s2UNyfOk-1FHUU", "ca"}
+	//Make instace and call methods
+	g := gisbn.New("9780262033848", "AIzaSyDKepjfaVBRcgsnPALw5s2UNyfOk-1FHUU", "ca")
 	g.Fetch()
 	fmt.Println(g.Title())   //Introduction to Algorithms
+
+
+Example
+-------------	
+[example](https://github.com/eftakhairul/go-gisbn/tree/master/example)
 
 ### Development
 
