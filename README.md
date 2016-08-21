@@ -3,14 +3,14 @@ It's a standard GOlang library. It fetches book's information by ISBN number bas
 
 Installation
 -------------
-	go get https://github.com/eftakhairul/go-gisbn
+	go get github.com/eftakhairul/go-gisbn
 
 Project Usage
 -------------
 The API usage is very simple. Just import the go-gisbn package
 
 	import (
-		"https://github.com/eftakhairul/go-gisbn/gisbn"
+		"github.com/eftakhairul/go-gisbn/gisbn"
 	)
 
 	Make instace and call methods
