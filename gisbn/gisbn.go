@@ -30,6 +30,14 @@ type GISBN struct {
 	country string	
 }
 
+func New(isbn string, key string, country string) (gisbn * GISBN) {
+    return &GISBN{
+        isbn: name,
+        key: key,
+        country: country
+    }
+}
+
 //Set ISBN
 //
 //@param: isbn string
@@ -144,5 +152,3 @@ func getBook(body []byte) (Book, error) {
 
 	return jsonresponse.Items[0].Volumeinfo, err
 }
-
-
