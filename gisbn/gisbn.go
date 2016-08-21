@@ -30,6 +30,11 @@ type GISBN struct {
 	country string	
 }
 
+//Create instance of GISBN
+//
+//@param: isbn string
+//@param: key string
+//@param: country string
 func New(isbn string, key string, country string) (gisbn * GISBN) {
     return &GISBN{
         isbn: isbn,
