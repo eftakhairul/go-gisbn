@@ -32,9 +32,9 @@ type GISBN struct {
 
 func New(isbn string, key string, country string) (gisbn * GISBN) {
     return &GISBN{
-        isbn: name,
+        isbn: isbn,
         key: key,
-        country: country
+        country: country,
     }
 }
 
