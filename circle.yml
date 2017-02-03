@@ -3,9 +3,6 @@ machine:
     IMPORT_PATH: "github.com/eftakhairul/go-gisbn"
 
 dependencies:
-  pre:
-    - go get -d -u ./...
-
   override:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
     - rsync -azC --delete ./ "$GOPATH/src/$IMPORT_PATH/"
@@ -15,4 +12,4 @@ test:
     - go vet ./...
 
   override:
-    - godep go test ./...
+    - cd gisbn && go test 
