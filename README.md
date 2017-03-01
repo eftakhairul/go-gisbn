@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/eftakhairul/go-gisbn.svg?style=svg)](https://circleci.com/gh/eftakhairul/go-gisbn)
+
 # go-gisbn
 It's a standard GOlang library. It fetches book's information by ISBN number based on Google Book API.
 
