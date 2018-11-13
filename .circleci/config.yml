@@ -13,4 +13,4 @@ jobs: # basic units of work in a run
 
       - run:
           name: Run unit tests
-          command:  make test
+          command:  go test -v ./...
